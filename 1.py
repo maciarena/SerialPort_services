@@ -1,3 +1,16 @@
+'''
+This module task purpose is to provide easy interface to work with the serial port.
+
+METHODS DESCRIPTION:
+- _init_ - here you can setup your connection (port used, baudrate and timeout)
+
+- input_connection - you can write data from serial port directly into file
+
+- output_connection - you can read data from file and send it via serial port 
+
+- close - closes a serial connection and a file
+'''
+
 import serial
 import serial.tools.list_ports
 import io
@@ -19,7 +32,7 @@ class SerialPort:
         serial_connection = serial.Serial('/dev' + serial_port, baudrate, timeout)
         return serial_connection
 
-    def IO_connection():
+    def input_connection():
         print('Input file name you would like to use:')
         file_to_work_on = input('Set the file path: ')
         file_to_work_on = open(file)
@@ -34,8 +47,12 @@ class SerialPort:
                 raise('KeyError: KeyboardInterrupt has been caught - connection has been closed')
             
 
+    def output_connection():
+        print('Input file from which you would like to read data:')
+        file = input('File path: ')
+        open(file)
+
     def close():
         file.close()
         serial_connection.close()
-        
-    
+ 
